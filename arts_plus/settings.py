@@ -3,8 +3,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# AZURE_ACCOUNT_NAME = "geco2studios"
-# AZURE_CONTAINER_NAME = "studios"
+AZURE_ACCOUNT_NAME = "geco2studios"
+AZURE_ACCOUNT_KEY = "2VqmDrYoffc1YwvH1+4aSTfbhoPf/YLJuJGpM0lkIJ/F5nzkC7AS8VFOicN/lXUU9zJRs12RLSKJ+AStgxnCVA=="
+AZURE_CONTAINER_NAME = "studios"
+
 
 DEFAULT_FILE_STORAGE = 'arts_plus.storage_backends.AzureMediaStorage'
 
