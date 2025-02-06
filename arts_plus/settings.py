@@ -2,9 +2,13 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from azure.storage.blob import BlobServiceClient
+import socket
 
 # Load environment variables from .env file
 load_dotenv()
+
+# Increase timeout duration for HTTP requests
+socket.setdefaulttimeout(800)  # Timeout in seconds (10 minutes)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
