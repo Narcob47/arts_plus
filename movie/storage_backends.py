@@ -1,7 +1,10 @@
+from django.conf import settings
 from storages.backends.azure_storage import AzureStorage
 
 class AzureMediaStorage(AzureStorage):
-    account_name = 'geco2studios'  # Must be replaced by your <storage_account_name>
-    account_key = '2VqmDrYoffc1YwvH1+4aSTfbhoPf/YLJuJGpM0lkIJ/F5nzkC7AS8VFOicN/lXUU9zJRs12RLSKJ+AStgxnCVA=='
-    azure_container = 'studios'
-    expiration_secs = None
+    account_name = settings.AZURE_ACCOUNT_NAME
+    account_key = settings.AZURE_ACCOUNT_KEY
+    azure_container = settings.AZURE_CONTAINER_NAME
+    connection_string = settings.AZURE_CONNECTION_STRING
+    expiration_secs = None  # Public access
+    

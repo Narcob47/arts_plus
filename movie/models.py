@@ -1,7 +1,4 @@
-# models.py
 from django.db import models
-from django.conf import settings
-from storages.backends.azure_storage import AzureStorage
 from movie.storage_backends import AzureMediaStorage
 
 class Video(models.Model):
@@ -12,3 +9,8 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_video_url(self):
+        if self.video_file:
+            return self.video_file.url
+        return None

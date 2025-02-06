@@ -1,23 +1,30 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+from azure.storage.blob import BlobServiceClient
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+DEFAULT_FILE_STORAGE = "storages.backends.azure_storage.AzureStorage"
+
 AZURE_ACCOUNT_NAME = "geco2studios"
-AZURE_ACCOUNT_KEY = "2VqmDrYoffc1YwvH1+4aSTfbhoPf/YLJuJGpM0lkIJ/F5nzkC7AS8VFOicN/lXUU9zJRs12RLSKJ+AStgxnCVA=="
 AZURE_CONTAINER_NAME = "studios"
-
-
-DEFAULT_FILE_STORAGE = 'arts_plus.storage_backends.AzureMediaStorage'
+AZURE_ACCOUNT_KEY = "2VqmDrYoffc1YwvH1+4aSTfbhoPf/YLJuJGpM0lkIJ/F5nzkC7AS8VFOicN/lXUU9zJRs12RLSKJ+AStgxnCVA=="  # Store securely using environment variables!
+AZURE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=geco2studios;AccountKey=2VqmDrYoffc1YwvH1+4aSTfbhoPf/YLJuJGpM0lkIJ/F5nzkC7AS8VFOicN/lXUU9zJRs12RLSKJ+AStgxnCVA==;EndpointSuffix=core.windows.net"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t8f5x3aqj692yjk90r3+f2cge6n*)88xz2)p374$uf!97n7fqt'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*', 'http://52.247.227.91:4000/']
 
